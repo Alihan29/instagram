@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+
+    <!-- Подключаем локальные стили -->
+    <link rel="stylesheet" href="{% static 'sass/vender/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'sass/vender/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'owlcarousel/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'owlcarousel/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'sass/main.css' %}">
+</head>
+
+<body>
+
+    <div class="post_page">
+        <!--***** nav menu start ****** -->
+        <div class="nav_menu">
+            <div class="fix_top">
+                <!-- nav for big->medium screen -->
+                <div class="nav">
+                    <div class="logo">
+                        <a href="./home.html">
+                            <img class="d-block d-lg-none small-logo" src="{% static 'images/instagram.png' %}" alt="logo">
+                            <img class="d-none d-lg-block" src="{% static 'images/logo_menu.png' %}" alt="logo">
+                        </a>
+                    </div>
+                    <div class="menu">
+                        <ul>
+                            <li>
+                                <a class="active" href="{% url 'home' %}">
+                                    <img src="{% static 'images/accueil.png' %}">
+                                    <span class="d-none d-lg-block ">Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'reels' %}">
+                                    <img src="{% static 'images/video.png' %}">
+                                    <span class="d-none d-lg-block ">Reels</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#send_message_modal">
+                                    <img src="{% static 'images/send.png' %}">
+                                    <span class="d-none d-lg-block ">Messages</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal">
+                                    <img src="{% static 'images/tab.png' %}">
+                                    <span class="d-none d-lg-block ">Create</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'profile' %}">
+                                    <img class="circle story" src="{% static 'images/profile_img.jpg' %}">
+                                    <span class="d-none d-lg-block ">Profile</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- nav for small screen  -->
+                <div class="nav_sm">
+                    <div class="content">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="logo" src="{% static 'images/logo_menu.png' %}">
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">
+                                        <span>Following</span>
+                                        <img src="{% static 'images/add-friend.png' %}">
+                                    </a></li>
+                                <li><a class="dropdown-item" href="#">
+                                        <span>Favorites</span>
+                                        <img src="{% static 'images/star.png' %}">
+                                    </a></li>
+                            </ul>
+                        </div>
+                        <div class="left">
+                            <div class="search_bar">
+                                <div class="input-group">
+                                    <div class="form-outline">
+                                        <div>
+                                            <img src="{% static 'images/search.png' %}" alt="search">
+                                        </div>
+                                        <input type="search" id="search" class="form-control" placeholder="Search">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content goes here (posts, comments, etc.) -->
+
+        <!-- Modal for comments -->
+        <div class="modal fade" id="message_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Comments</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="comments">
+                            <div class="comment">
+                                <div class="d-flex">
+                                    <div class="img">
+                                        <img src="{% static 'images/profile_img.jpg' %}" alt="">
+                                    </div>
+                                    <div class="content">
+                                        <div class="person">
+                                            <h4>namePerson</h4>
+                                            <span>3j</span>
+                                        </div>
+                                        <p>Wow amazing shot</p>
+                                        <div class="replay">
+                                            <button class="replay">Reply</button>
+                                            <button class="translation">See translation</button>
+                                        </div>
+                                        <div class="answers">
+                                            <button class="see_comment">
+                                                <span class="hide_com">Hide all responses</span>
+                                                <span class="show_c">
+                                                    <span class="line"></span> See the <span>1</span> answers
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="like">
+                                    <img class="not_loved" src="{% static 'images/love.png' %}" alt="">
+                                    <img class="loved" src="{% static 'images/heart.png' %}" alt="">
+                                    <p>55</p>
+                                </div>
+                            </div>
+                            <div class="responses">
+                                <div class="response comment">
+                                    <div class="d-flex">
+                                        <div class="img">
+                                            <img src="{% static 'images/profile_img.jpg' %}" alt="">
+                                        </div>
+                                        <div class="content">
+                                            <div class="person">
+                                                <h4>namePerson</h4>
+                                                <span>3j</span>
+                                            </div>
+                                            <p>Wow amazing shot</p>
+                                            <div class="replay">
+                                                <button>Reply</button>
+                                                <button>See translation</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="like">
+                                        <img class="not_loved" src="{% static 'images/love.png' %}" alt="">
+                                        <img class="loved" src="{% static 'images/heart.png' %}" alt="">
+                                        <p>55</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post">
+                            <div class="input">
+                                <img src="{% static 'images/profile_img.jpg' %}" alt="">
+                                <input type="text" id="emoji_comment" placeholder="Add a comment..." />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Modals and Content -->
+
+    </div>
+
+    <!-- Подключаем локальные скрипты -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
